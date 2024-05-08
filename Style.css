@@ -1,0 +1,103 @@
+/* styles.css */
+
+/* Styling for the collapsible menu */
+.menu {
+    width: 200px;
+    background-color: #f0f0f0;
+    position: fixed;
+    top: 0;
+    left: -200px;
+    height: 100%;
+    overflow-x: hidden;
+    transition: 0.3s;
+}
+
+.menu a {
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu a:hover {
+    background-color: #ddd;
+}
+
+.menu-btn {
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    top: 20px;
+    left: 180px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Styling for the form */
+.form-container {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+
+.form-container div {
+    margin-bottom: 10px;
+}
+
+
+#form-Q1 {
+
+    display: none;
+}
+ 
+#form-Q2 {
+
+    display: none;
+}
+
+
+#form-Q3 {
+
+    display: none;
+}
+
+
+#form-Q4 {
+
+    display: none;
+}
+
+
+#form-Q5 {
+
+    display: none;
+}
+
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #555;
+}
