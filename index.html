@@ -1,91 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sonny Shones</title> 
-<link rel="stylesheet" href="styles.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonny Shones Window Service</title> 
+   
+
+    <style> .btn{border:1px solid black; padding:5px;display:inline-block} </style> 
 </head>
 <body>
 
-<!-- Collapsible Menu -->
-<div class="menu" id="menu">
-    <a href="#">My Account</a>
- <a href="#">Quick Order</a>
+    <!-- Collapsible Menu -->
+    <div class="menu" id="menu">
+        <a href="#">My Account</a>
+    <a href="#">Quick Order</a>
     <a href="#">Message</a>
-</div>
-<button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    </div>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
 
-
-<h2>Sonny Shones </h2>
+    <h1>Sonny Shines </h1>
 <!-- Form -->
-<div class="form-container">
-    <div class="form" id="form-Q1"> 
-        <label for="q1">IS this a quote or order</label>
-        <button type="button" name="Quote" id="Quote">Just Looking!</button>
-        <button type="button" name="Order" id="Order">Just Get over Here</button>
-    </div>
-
-    <div class="q2" id="form-Q2"> 
-        <label for="name">How many windows Do you need washed?</label>
-        <select name="NumWindows" id="windows">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
-              <br><br>
-              <input type="submit" value="Submit">
-    </div>
-    <div class="form" id="form-Q3"> 
-        <label for="q3">DO you need them cleaned all year long or seasonaly</label>
-         <select name="Frequency" id="Frequency">
-                    <option value="1">All year</option>
-                    <option value="2">Seasonally</option>
-                  </select>
-                  <br><br>
-                  <input type="submit" value="Submit">
+    <div class="form-container">
+        <div class="QuestionBox" id="Question1"> 
+            <label for="q1">Is this a quote or order</label>
+            <br>
+            <button  name="Quote" id="Quote">Just Looking!</button>
+            <button  name="Order" id="Order"> Order</button>
+        </div>
+        <div class="QuestionBox" id="Question2"> 
+            <label for="name">How many windows do you need washed?</label>
+            <select id="WindowSelect">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+            </select>
+            <button name="Quote" id="WindowChoice">Next</button>
         </div>
 
-        <div class="q4" id="form-Q4"> 
+        <div class="QuestionBox" id="Question3"> 
+            <label for="q3">DO you need them cleaned all year long or seasonaly</label>
+            <select  id="Frequency">
+                        <option value="year">All year</option>
+                        <option value="Seasonal">Seasonally</option>
+                    </select>
+                    <br>
+                    <input type="submit" id="CustomerSeason" value="Submit">
+        </div>
+
+        <div class="QuestionBox" id="Question4"> 
             <label for="Season_Calendar">Please specify your season start and end date</label>
             <label for="Start">Start Date</label>
+            <bre></bre>
             <input type="date" id="start" name="Season_Start" value="2018-07-22" min="2018-01-01" max="2018-12-31" />     
-            
             <label for="End">End Date</label>
             <input type="date" id="start" name="Season_End" value="2018-07-22" min="2018-01-01" max="2018-12-31" />     
-        
         </div>
 
+        <div>
+
+        </div>
+    </div>
 
 <script>
-    // Jquery Click even Handler for Hiding web form sections
+    // Jquery Click even Handler catching data nad hiding
+        /*
+        Q1  if quote button selected set order to no so that user just gets a download, and hides q1  and shows q2
+        */
+        
+        
+        //Q1 user event handler
+        $('#Quote').click(function()
+        {
+                    HideShow("#Question1","#Question2")
+                    let Order = false;         //removes order option from workflow
+        })
 
-    // if quote button selected set order to no so that user just gets a download, and hides q1  and shows q2
-    $('#Quote').click(function(){
-	    $('#form-Q1').css('display', 'none');
-        $('#form-Q2').css('display', 'block');
-        var Order = false; // removes order option from workflow
-    })
+         /* IF order is selected, we save the order variable as true and allow a print out. Addtionally we hide
+            the first question and move to the second one.*/
+        $('#Order').click(function()
+            {
+                HideShow("#Question1","#Question2")
+                let Order = true; // enables order do be placed in workflow
+            }
+        )
 
-    /*
-        IF order is selected, we save the order variable as true and allow a print out. Addtionally we hide
-        the first question and move to the second one.
-    */
-    $('#Order').click(function(){
-	    $('#form-Q1').css('display', 'none');
-        $('#form-Q2').css('display', 'block');
-        var Order = true; // enables order do be placed in workflow
-    })
 
-    //hides  
+        // q2 records number of windows
+        $('#WindowChoice').click(function()
+            {
+                let CustomerWindwows= $("WindowSelect").val(); 
+                HideShow("#Question2","#Question3")
+               // var NumberOfWindows = //get value of 
+            }
+        )
+
+        // q3 seasonally
+        $('#CustomerSeason').click(function()
+        {
+            let CustomerSeason = $("#Frequency").val();
+
+            if (CustomerSeason == "Seasonal")
+             {
+                HideShow("#Question3","#Question4");
+             }
+        })
+
+      
+
+        function HideShow(ItemtoHide, ItemtoShow) // hides a section and shows hte other one
+        {
+            $(ItemtoHide).hide(); // cahnges css to hidden
+            $(ItemtoShow).show(); //cahnges css to show
+        }
+
 </script>
 
 </body>
